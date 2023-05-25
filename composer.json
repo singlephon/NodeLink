@@ -5,13 +5,19 @@
         "singlephon",
         "nodelink"
     ],
-    "homepage": "https://github.com/singlephon/nodelink",
+    "homepage": "https://github.com/bcorpj/NodeLink",
     "license": "MIT",
     "type": "library",
     "authors": [
         {
             "name": "Rakhat Bakytzhanov",
             "email": "singlephon@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/bcorpj/NodeLink"
         }
     ],
     "require": {
