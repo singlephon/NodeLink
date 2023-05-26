@@ -13,7 +13,7 @@ class Version
 
     public static function getRequest(string $resource): string
     {
-        $version = static::toDirectory(env('COMMON_SERVICE_APP_VERSION'));
+        $version = static::toDirectory(env('NODELINK_SERVICE_APP_VERSION'));
         return "App\\NodeLink\\Requests\\V$version\\{$resource}Request";
     }
 }

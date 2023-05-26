@@ -2,11 +2,12 @@
 
 namespace Singlephon\Nodelink\Common;
 
+use GuzzleHttp\Promise\PromiseInterface;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
-use Illuminate\Http\Client\Response;
-use GuzzleHttp\Promise\PromiseInterface;
 use Singlephon\Nodelink\Service\Intentions\QueryAbstraction;
+use Singlephon\Nodelink\Service\Intentions\Security;
 
 /**
  *
@@ -38,6 +39,8 @@ use Singlephon\Nodelink\Service\Intentions\QueryAbstraction;
 
 trait CommonQuery
 {
+    use Security;
+
     protected string $url;
     protected string $name;
     protected string $key;
@@ -49,11 +52,11 @@ trait CommonQuery
 
     public function __construct()
     {
-        $this->url = env('COMMON_SERVICE_URL');
-        $this->name = env('COMMON_SERVICE_APP_NAME');
-        $this->key = env('COMMON_SERVICE_APP_KEY');
-        $this->version = env('COMMON_SERVICE_APP_VERSION');
-        $this->testVersion = env('COMMON_SERVICE_APP_TEST_VERSION');
+        $this->url = env('CORELINK_SERVICE_URL');
+        $this->name = env('NODELINK_SERVICE_APP_NAME');
+        $this->key = env('NODELINK_SERVICE_APP_KEY');
+        $this->version = env('NODELINK_SERVICE_APP_VERSION');
+        $this->testVersion = env('NODELINK_SERVICE_APP_TEST_VERSION');
     }
 
     public function __call(string $method, array $arguments)
@@ -95,15 +98,16 @@ trait CommonQuery
         if (!$route)
             dd("Route cannot be null");
 
-        $this->url = Str::of(env('COMMON_SERVICE_URL') . $route)->replace('//', '/');
+        $this->url = Str::of(env('CORELINK_SERVICE_URL') . $route)->replace('//', '/');
         return $this;
     }
 
     private function postQuery (array $body = []): PromiseInterface|Response
     {
-        return Http::withBody(collect($body)->toJson(), 'application/json')
+        $body = collect($body)->toJson();
+        return Http::withBody($body, 'application/json')
             ->withHeaders([
-                'service-key' => $this->key,
+                'checksum' => $this->checksumGenerate($body, $this->key),
                 'service-name' => $this->name
             ])
             ->post($this->url);

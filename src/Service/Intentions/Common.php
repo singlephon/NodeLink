@@ -3,13 +3,15 @@
 namespace Singlephon\Nodelink\Service\Intentions;
 
 use Closure;
+use GuzzleHttp\Promise\PromiseInterface;
+use Illuminate\Http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Singlephon\Nodelink\Common\CommonQuery;
 use Singlephon\Nodelink\Service\Insertions\SensitiveInsertion;
 
 /**
- * @method post(Closure|string $handler, ?string $event = null, ?mixed ...$args = null)
+ * @method PromiseInterface|Response post(Closure|string $handler, ?string $event = null, ?mixed ...$args = null)
  */
 class Common
 {
