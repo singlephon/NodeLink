@@ -11,7 +11,7 @@ use Singlephon\Nodelink\Service\Intentions\Common;
 Route::post('/nodelink/produce', fn (Request $request) => Common::produce($request));
 Route::post('/nodelink/notify', fn (Request $request) => Common::notify($request));
 Route::post('/nodelink/token', fn (TokenRequest $request) => Authentication::commonTokenRequest($request));
-Route::post('/nodelink/register', fn (Request $request) => NodelinkRegister::init($request));
+Route::post('/nodelink/register', fn (Request $request) => (new NodelinkRegister)->init($request));
 
 Route::post('/login', fn(AuthRequest $request) => Authentication::init($request));
 Route::get('/test', fn () => 'sad');

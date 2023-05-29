@@ -3,6 +3,7 @@
 namespace Singlephon\Nodelink;
 
 use Illuminate\Support\ServiceProvider;
+use Singlephon\Nodelink\Commands\RegisterNodeCommand;
 
 class NodelinkServiceProvider extends ServiceProvider
 {
@@ -48,7 +49,7 @@ class NodelinkServiceProvider extends ServiceProvider
             ], 'lang');*/
 
             // Registering package commands.
-            // $this->commands([]);
+             $this->registerCommands();
         }
     }
 
@@ -64,5 +65,13 @@ class NodelinkServiceProvider extends ServiceProvider
         $this->app->singleton('nodelink', function () {
             return new Nodelink;
         });
+    }
+
+
+    protected function registerCommands(): void
+    {
+        $this->commands([
+            RegisterNodeCommand::class
+        ]);
     }
 }

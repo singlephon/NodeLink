@@ -3,14 +3,28 @@
 namespace Singlephon\Nodelink;
 
 use Illuminate\Http\Request;
-use Symfony\Component\Console\Output\ConsoleOutput;
+use Illuminate\Support\Facades\URL;
+use Singlephon\Nodelink\Service\Intentions\Security;
 
 class NodelinkRegister
 {
-    public static function init(Request $request)
+    use Security;
+    public function init(Request $request)
     {
-        $output = new ConsoleOutput();
-        $output->writeln($request);
-        return response()->json(['sad' => 'nice']);
+        $data = $request->validate([
+            'registerKey' => [
+                'required',
+                'string',
+                'min:64',
+                'max:64',
+           ]
+        ]);
+        $validKey = $this->assertChecksum(URL::to(''), env('NODELINK_SERVICE_APP_KEY'), $data['registerKey']);
+        if (!$validKey) return response()->json([], 422);
+        return response()->json([
+            'name' => env('NODELINK_SERVICE_APP_NAME'),
+            'version' => env('NODELINK_SERVICE_APP_VERSION'),
+            'test_version' => env('NODELINK_SERVICE_APP_TEST_VERSION', 0)
+        ]);
     }
 }
