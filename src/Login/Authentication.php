@@ -49,7 +49,6 @@ class Authentication
 
     public static function commonTokenRequest (TokenRequest $request): JsonResponse
     {
-
         $user = User::find($request->id);
 
         return response()->json(

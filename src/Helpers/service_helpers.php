@@ -72,7 +72,7 @@ function array_rename_keys_add_in_start ($keys, $insert, $array): array
 
 function request_action(): string
 {
-    return Str::of(URL::current())->afterLast('common/');
+    return Str::of(URL::current())->afterLast('nodelink/');
 }
 
 function getHeader(string $key)
