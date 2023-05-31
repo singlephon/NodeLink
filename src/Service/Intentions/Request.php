@@ -36,7 +36,7 @@ abstract class Request
     }
 
     /**
-     * Define CS requests to update or create by [Model::class => @(array for upsert)].
+     * Define CoreLink requests to update or create by [Model::class => @(array for upsert)].
      *
      * For nullable fields add (@) before value
      *

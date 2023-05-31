@@ -3,6 +3,7 @@
 namespace Singlephon\Nodelink;
 
 use Illuminate\Support\ServiceProvider;
+use Singlephon\Nodelink\Commands\CreateServiceRequestCommand;
 use Singlephon\Nodelink\Commands\RegisterNodeCommand;
 
 class NodelinkServiceProvider extends ServiceProvider
@@ -71,7 +72,7 @@ class NodelinkServiceProvider extends ServiceProvider
     protected function registerCommands(): void
     {
         $this->commands([
-            RegisterNodeCommand::class
+            CreateServiceRequestCommand::class
         ]);
     }
 }

@@ -1,0 +1,18 @@
+<?php
+
+namespace App\NodeLink\Requests\V{{ version }};
+
+use Singlephon\Nodelink\Service\Intentions\Request;
+use Singlephon\Nodelink\Service\Intentions\Bindings;
+
+class {{ name }}ServiceRequest extends Request
+{
+
+    protected function bindings (object $data): array
+    {
+        return [
+            //...
+        ];
+    }
+
+}
