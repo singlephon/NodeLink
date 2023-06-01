@@ -23,5 +23,4 @@ Route::prefix('/nodelink')->group(function () {
     });
 });
 
-
 Route::post('/login', fn(AuthRequest $request) => Authentication::init($request));

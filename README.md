@@ -1,38 +1,43 @@
-# Very short description of the package
+# CommonSource: NodeLink
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/singlephon/nodelink.svg?style=flat-square)](https://packagist.org/packages/singlephon/nodelink)
 [![Total Downloads](https://img.shields.io/packagist/dt/singlephon/nodelink.svg?style=flat-square)](https://packagist.org/packages/singlephon/nodelink)
 ![GitHub Actions](https://github.com/singlephon/nodelink/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+This project is a Laravel-based microservices architecture designed to allow easy communication between multiple applications through a centralized parent application. The parent application acts as a hub for communication between the child applications, allowing for efficient and streamlined data sharing across multiple services.
+
+This architecture allows for easy scaling and maintenance of individual services without affecting the entire system. With the use of Serviceable and Syncable classes, this system can synchronize data across different applications, ensuring that all services remain up to date with the latest information.
+
+Developers can easily extend this architecture by adding new services, implementing Serviceable and Syncable classes, and defining routes to handle data synchronization. Overall, this project provides an efficient and scalable solution for building microservices-based applications.
 
 ## Installation
 
-You can install the package via composer:
+1. Install **NodeLink** to Laravel project
 
-```bash
+```php
 composer require singlephon/nodelink
 ```
 
-## Usage
+2. Add configuration parameters to **.env**
 
 ```php
-// Usage description here
+CORELINK_SERVICE_URL=
+
+NODELINK_SERVICE_APP_NAME=
+NODELINK_SERVICE_APP_KEY=
+NODELINK_SERVICE_APP_VERSION=1.1
+NODELINK_SERVICE_APP_TEST_VERSION=1.2
 ```
 
-### Testing
+3. [Register this application to **CoreLink** service](https://github.com/bcorpj/CoreLink/blob/master/README.md)
 
-```bash
-composer test
-```
+...coming soon
+
 
 ### Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ### Security
 
@@ -41,12 +46,8 @@ If you discover any security related issues, please email singlephon@gmail.com i
 ## Credits
 
 -   [Rakhat Bakytzhanov](https://github.com/singlephon)
--   [All Contributors](../../contributors)
 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
