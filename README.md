@@ -2,7 +2,6 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/singlephon/nodelink.svg?style=flat-square)](https://packagist.org/packages/singlephon/nodelink)
 [![Total Downloads](https://img.shields.io/packagist/dt/singlephon/nodelink.svg?style=flat-square)](https://packagist.org/packages/singlephon/nodelink)
-![GitHub Actions](https://github.com/singlephon/nodelink/actions/workflows/main.yml/badge.svg)
 
 This project is a Laravel-based microservices architecture designed to allow easy communication between multiple applications through a centralized parent application. The parent application acts as a hub for communication between the child applications, allowing for efficient and streamlined data sharing across multiple services.
 
